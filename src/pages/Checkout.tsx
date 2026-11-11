@@ -12,23 +12,23 @@ const Checkout = () => {
   const [isSuccess, setIsSuccess] = useState(false);
 
   const [formData, setFormData] = useState({
-    email: '',
-    firstName: '',
-    lastName: '',
-    address: '',
-    city: '',
-    country: '',
-    postalCode: '',
+    email: 'contacto@mulfordkore.com',
+    firstName: 'Natalia',
+    lastName: 'Rojas',
+    address: 'Calle 100 # 15-20',
+    city: 'Bogotá',
+    country: 'Colombia',
+    postalCode: '110111',
     // Payment details
     paymentMethod: 'credit' as PaymentMethodType,
-    cardName: '',
-    cardNumber: '',
-    expiryDate: '',
-    cvv: '',
+    cardName: 'NATALIA ROJAS',
+    cardNumber: '4532 0150 2039 4930',
+    expiryDate: '12/28',
+    cvv: '123',
     bank: 'bancolombia',
     documentType: 'CC',
-    documentNumber: '',
-    nequiPhone: '',
+    documentNumber: '1012345678',
+    nequiPhone: '3001234567',
     cashOutlet: 'efecty'
   });
 
