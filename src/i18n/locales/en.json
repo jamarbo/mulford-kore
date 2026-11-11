@@ -23,9 +23,28 @@
     "rights": "All rights reserved."
   },
   "home": {
-    "heroTitle1": "Embrace Your",
-    "heroTitle2": "Natural Radiance",
-    "heroDesc": "Discover our new collection of clean, sustainable beauty essentials designed for the modern aesthetic.",
+    "heroMessages": [
+      {
+        "title1": "Embrace Your",
+        "title2": "Natural Radiance",
+        "desc": "Discover our new collection of clean, sustainable beauty essentials designed for the modern aesthetic."
+      },
+      {
+        "title1": "Elevate Your",
+        "title2": "Daily Ritual",
+        "desc": "High-concentration botanical formulas designed to nourish, revitalize, and enhance your inherent beauty."
+      },
+      {
+        "title1": "Redefine Your",
+        "title2": "Authentic Elegance",
+        "desc": "Signature cosmetics crafted with pure science and clean ingredients for glowing, flawless skin."
+      },
+      {
+        "title1": "Awaken Your",
+        "title2": "Skin's Pure Essence",
+        "desc": "Silky textures and advanced skincare technology that transform your complexions day by day."
+      }
+    ],
     "shopCollection": "Shop the Collection",
     "curated": "Curated Favorites",
     "curatedDesc": "Our most loved products, chosen by you.",

@@ -9,9 +9,13 @@ const Home = () => {
   const { products, fetchProducts, isLoading } = useStore();
   const { t } = useTranslation();
   const [imageLoaded, setImageLoaded] = useState(false);
+  const [heroIndex, setHeroIndex] = useState(0);
 
   useEffect(() => {
     fetchProducts();
+    // Randomly pick a hero message index each time page is loaded/refreshed
+    const randomIndex = Math.floor(Math.random() * 4);
+    setHeroIndex(randomIndex);
   }, [fetchProducts]);
 
   const featuredProducts = products.slice(0, 4);
@@ -42,12 +46,12 @@ const Home = () => {
             </span>
             
             <h1 className="text-5xl md:text-7xl font-serif text-white mb-6 leading-tight animate-text-appear">
-              {t('home.heroTitle1')} <br />
-              <span className="italic font-normal text-stone-200">{t('home.heroTitle2')}</span>
+              {t(`home.heroMessages.${heroIndex}.title1`)} <br />
+              <span className="italic font-normal text-stone-200">{t(`home.heroMessages.${heroIndex}.title2`)}</span>
             </h1>
 
             <p className="text-lg md:text-xl text-stone-300 mb-10 font-light leading-relaxed animate-text-delay">
-              {t('home.heroDesc')}
+              {t(`home.heroMessages.${heroIndex}.desc`)}
             </p>
 
             <div className="animate-btn-delay">

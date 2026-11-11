@@ -23,9 +23,28 @@
     "rights": "Todos los derechos reservados."
   },
   "home": {
-    "heroTitle1": "Abraza tu",
-    "heroTitle2": "Brillo Natural",
-    "heroDesc": "Descubre nuestra nueva colección de cosméticos limpios y sostenibles diseñados para la estética moderna.",
+    "heroMessages": [
+      {
+        "title1": "Abraza tu",
+        "title2": "Brillo Natural",
+        "desc": "Descubre nuestra nueva colección de cosméticos limpios y sostenibles diseñados para la estética moderna."
+      },
+      {
+        "title1": "Eleva tu",
+        "title2": "Ritual Diario",
+        "desc": "Fórmulas botánicas de alta concentración diseñadas para nutrir, rejuvenecer y realzar tu belleza inherente."
+      },
+      {
+        "title1": "Redefine tu",
+        "title2": "Elegancia Auténtica",
+        "desc": "Cosmética de autor elaborada con ciencia pura e ingredientes limpios para una piel radiante e impecable."
+      },
+      {
+        "title1": "Despierta la",
+        "title2": "Esencia de tu Piel",
+        "desc": "Texturas sedosas y tecnología avanzada en cuidado facial que transforman tu rostro día a día."
+      }
+    ],
     "shopCollection": "Comprar Colección",
     "curated": "Favoritos Seleccionados",
     "curatedDesc": "Nuestros productos más queridos, elegidos por ti.",
