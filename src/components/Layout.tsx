@@ -1,5 +1,5 @@
 import { Outlet, Link } from 'react-router-dom';
-import { ShoppingCart, Menu, Search, User, Globe } from 'lucide-react';
+import { ShoppingCart, Menu, Search, User, Globe, X } from 'lucide-react';
 import { useStore } from '../store/useStore';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -8,6 +8,7 @@ const Layout = () => {
   const { cart, fetchCart } = useStore();
   const { t, i18n } = useTranslation();
   const [showLangMenu, setShowLangMenu] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     fetchCart();
@@ -27,8 +28,16 @@ const Layout = () => {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
             {/* Mobile menu button */}
-            <button className="p-2 md:hidden" aria-label="Menu">
-              <Menu className="w-6 h-6 text-stone-600" />
+            <button 
+              className="p-2 md:hidden z-50" 
+              aria-label="Menu"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              {isMobileMenuOpen ? (
+                <X className="w-6 h-6 text-stone-600" />
+              ) : (
+                <Menu className="w-6 h-6 text-stone-600" />
+              )}
             </button>
 
             {/* Logo */}
@@ -48,6 +57,35 @@ const Layout = () => {
                 {t('nav.makeup')}
               </Link>
             </nav>
+
+            {/* Mobile Navigation Menu */}
+            {isMobileMenuOpen && (
+              <div className="absolute top-16 left-0 right-0 bg-white border-b border-stone-200 p-4 md:hidden shadow-lg">
+                <nav className="flex flex-col space-y-4">
+                  <Link 
+                    to="/products" 
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="text-sm font-medium text-stone-600 hover:text-stone-900 transition-colors py-2"
+                  >
+                    {t('nav.shopAll')}
+                  </Link>
+                  <Link 
+                    to="/products?category=skincare" 
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="text-sm font-medium text-stone-600 hover:text-stone-900 transition-colors py-2"
+                  >
+                    {t('nav.skincare')}
+                  </Link>
+                  <Link 
+                    to="/products?category=makeup" 
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="text-sm font-medium text-stone-600 hover:text-stone-900 transition-colors py-2"
+                  >
+                    {t('nav.makeup')}
+                  </Link>
+                </nav>
+              </div>
+            )}
 
             {/* Icons */}
             <div className="flex items-center space-x-4 md:space-x-6">
