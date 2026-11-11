@@ -1,1 +1,52 @@
 @import 'tailwindcss';
+
+@keyframes heroFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(1.03);
+  }
+  to {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+}
+
+@keyframes textSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-hero-bg {
+  animation: heroFadeIn 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-text-appear {
+  animation: textSlideUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-text-delay {
+  animation: textSlideUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+  opacity: 0;
+}
+
+.animate-btn-delay {
+  animation: textSlideUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-hero-bg,
+  .animate-text-appear,
+  .animate-text-delay,
+  .animate-btn-delay {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

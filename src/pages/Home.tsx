@@ -1,12 +1,13 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { useStore } from '../store/useStore';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 const Home = () => {
   const { products, fetchProducts, isLoading } = useStore();
   const { t } = useTranslation();
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   useEffect(() => {
     fetchProducts();
@@ -17,30 +18,46 @@ const Home = () => {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative h-[80vh] bg-stone-100 flex items-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
+      <section className="relative h-[85vh] bg-stone-900 flex items-center overflow-hidden">
+        {/* Background Overlay & Skeleton Fallback */}
+        <div className={`absolute inset-0 z-0 transition-opacity duration-1000 ${imageLoaded ? 'opacity-100' : 'opacity-20'}`}>
           <img 
             src="https://images.unsplash.com/photo-1556228578-0d85b1a4d571?auto=format&fit=crop&q=80&w=2000" 
-            alt="Cosmetics flatlay" 
-            className="w-full h-full object-cover opacity-60"
+            alt="Cosmetics flatlay editorial" 
+            onLoad={() => setImageLoaded(true)}
+            className="w-full h-full object-cover animate-hero-bg"
           />
         </div>
+        
+        {/* Vignette & Gradient for depth */}
+        <div className="absolute inset-0 bg-gradient-to-r from-stone-950/80 via-stone-950/40 to-transparent z-0"></div>
+
+        {/* Hero Content */}
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-xl">
-            <h1 className="text-5xl md:text-7xl font-serif text-stone-900 mb-6 leading-tight">
+            {/* Tagline */}
+            <span className="inline-block text-xs uppercase tracking-[0.3em] font-medium text-stone-300 mb-4 animate-text-appear">
+              MulfordKore Atelier
+            </span>
+            
+            <h1 className="text-5xl md:text-7xl font-serif text-white mb-6 leading-tight animate-text-appear">
               {t('home.heroTitle1')} <br />
-              <span className="italic">{t('home.heroTitle2')}</span>
+              <span className="italic font-normal text-stone-200">{t('home.heroTitle2')}</span>
             </h1>
-            <p className="text-lg md:text-xl text-stone-700 mb-8 font-light">
+
+            <p className="text-lg md:text-xl text-stone-300 mb-10 font-light leading-relaxed animate-text-delay">
               {t('home.heroDesc')}
             </p>
-            <Link 
-              to="/products" 
-              className="inline-flex items-center space-x-2 bg-stone-900 text-white px-8 py-4 text-sm uppercase tracking-widest hover:bg-stone-800 transition-colors"
-            >
-              <span>{t('home.shopCollection')}</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
+
+            <div className="animate-btn-delay">
+              <Link 
+                to="/products" 
+                className="group relative inline-flex items-center space-x-3 bg-white text-stone-900 px-8 py-4 text-xs font-semibold uppercase tracking-[0.2em] overflow-hidden transition-all duration-300 hover:bg-stone-200 hover:shadow-2xl hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-stone-900"
+              >
+                <span className="relative z-10">{t('home.shopCollection')}</span>
+                <ArrowRight className="w-4 h-4 relative z-10 transition-transform duration-300 group-hover:translate-x-1" />
+              </Link>
+            </div>
           </div>
         </div>
       </section>
