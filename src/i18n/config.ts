@@ -11,8 +11,8 @@ i18n
       en: { translation: enTranslation },
       es: { translation: esTranslation }
     },
-    lng: 'en', // default language
-    fallbackLng: 'en',
+    lng: 'es', // default language
+    fallbackLng: 'es',
     interpolation: {
       escapeValue: false // react already safes from xss
     }
