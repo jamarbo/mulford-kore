@@ -1,4 +1,4 @@
-import type { Product, Category, CartItem, Order } from '../types';
+import type { Product, Category, CartItem, Order, PaymentDetails } from '../types';
 import { mockProducts, mockCategories } from '../mocks/data';
 
 // Simulating network delay
@@ -101,12 +101,13 @@ export const api = {
   },
 
   // Orders
-  createOrder: async (items: CartItem[], total: number): Promise<Order> => {
+  createOrder: async (items: CartItem[], total: number, paymentDetails?: PaymentDetails): Promise<Order> => {
     await delay(800);
     const order: Order = {
       id: generateId(),
       items: [...items],
       total,
+      paymentDetails,
       status: 'pending',
       createdAt: new Date().toISOString()
     };

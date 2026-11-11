@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import type { Product, CartItem, Category } from '../types';
+import type { Product, CartItem, Category, PaymentDetails } from '../types';
 import { api } from '../services/api';
 
 interface StoreState {
@@ -17,7 +17,7 @@ interface StoreState {
   updateCartItem: (itemId: string, quantity: number) => Promise<void>;
   removeFromCart: (itemId: string) => Promise<void>;
   clearCart: () => Promise<void>;
-  checkout: () => Promise<void>;
+  checkout: (paymentDetails?: PaymentDetails) => Promise<void>;
 }
 
 export const useStore = create<StoreState>((set, get) => ({
@@ -99,14 +99,14 @@ export const useStore = create<StoreState>((set, get) => ({
     }
   },
 
-  checkout: async () => {
+  checkout: async (paymentDetails) => {
     set({ isLoading: true, error: null });
     try {
       const { cart } = get();
       if (cart.length === 0) throw new Error('Cart is empty');
       
       const total = cart.reduce((sum, item) => sum + (item.product.price * item.quantity), 0);
-      await api.createOrder(cart, total);
+      await api.createOrder(cart, total, paymentDetails);
       set({ cart: [], isLoading: false });
     } catch (error: any) {
       set({ error: error.message || 'Failed to checkout', isLoading: false });

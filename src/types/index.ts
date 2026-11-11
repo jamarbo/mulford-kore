@@ -22,10 +22,30 @@ export interface CartItem {
   quantity: number;
 }
 
+export type PaymentMethodType = 'credit' | 'debit' | 'pse' | 'nequi' | 'cash';
+
+export interface PaymentDetails {
+  method: PaymentMethodType;
+  // Credit/Debit Card
+  cardNumber?: string;
+  cardName?: string;
+  expiryDate?: string;
+  cvv?: string;
+  // PSE
+  bank?: string;
+  documentType?: string;
+  documentNumber?: string;
+  // Nequi
+  phone?: string;
+  // Cash
+  cashOutlet?: string;
+}
+
 export interface Order {
   id: string;
   items: CartItem[];
   total: number;
+  paymentDetails?: PaymentDetails;
   status: 'pending' | 'completed' | 'cancelled';
   createdAt: string;
 }

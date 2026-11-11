@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { CheckCircle2 } from 'lucide-react';
+import { CheckCircle2, CreditCard, Smartphone, Landmark, Banknote, ShieldCheck } from 'lucide-react';
 import { useStore } from '../store/useStore';
 import { useTranslation } from 'react-i18next';
+import type { PaymentMethodType, PaymentDetails } from '../types';
 
 const Checkout = () => {
   const { cart, checkout, isLoading } = useStore();
@@ -18,9 +19,17 @@ const Checkout = () => {
     city: '',
     country: '',
     postalCode: '',
+    // Payment details
+    paymentMethod: 'credit' as PaymentMethodType,
+    cardName: '',
     cardNumber: '',
     expiryDate: '',
-    cvv: ''
+    cvv: '',
+    bank: 'bancolombia',
+    documentType: 'CC',
+    documentNumber: '',
+    nequiPhone: '',
+    cashOutlet: 'efecty'
   });
 
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -29,7 +38,7 @@ const Checkout = () => {
   const shipping = subtotal > 50 ? 0 : 5.99;
   const total = subtotal + shipping;
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
     // Clear error when typing
@@ -48,9 +57,19 @@ const Checkout = () => {
     if (!formData.firstName) newErrors.firstName = 'First name is required';
     if (!formData.lastName) newErrors.lastName = 'Last name is required';
     if (!formData.address) newErrors.address = 'Address is required';
-    if (!formData.cardNumber || formData.cardNumber.length < 16) newErrors.cardNumber = 'Valid card number is required';
-    if (!formData.expiryDate) newErrors.expiryDate = 'Expiry date is required';
-    if (!formData.cvv) newErrors.cvv = 'CVV is required';
+
+    // Payment validation based on selected method
+    if (formData.paymentMethod === 'credit' || formData.paymentMethod === 'debit') {
+      if (!formData.cardName) newErrors.cardName = 'Name on card is required';
+      if (!formData.cardNumber || formData.cardNumber.length < 15) newErrors.cardNumber = 'Valid card number is required';
+      if (!formData.expiryDate) newErrors.expiryDate = 'Expiry date is required';
+      if (!formData.cvv || formData.cvv.length < 3) newErrors.cvv = 'Valid CVV is required';
+    } else if (formData.paymentMethod === 'pse') {
+      if (!formData.bank) newErrors.bank = 'Please select a bank';
+      if (!formData.documentNumber) newErrors.documentNumber = 'Document number is required';
+    } else if (formData.paymentMethod === 'nequi') {
+      if (!formData.nequiPhone || formData.nequiPhone.length < 10) newErrors.nequiPhone = 'Valid 10-digit mobile number is required';
+    }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -60,8 +79,21 @@ const Checkout = () => {
     e.preventDefault();
     if (!validateForm()) return;
 
+    const paymentDetails: PaymentDetails = {
+      method: formData.paymentMethod,
+      cardNumber: (formData.paymentMethod === 'credit' || formData.paymentMethod === 'debit') ? formData.cardNumber : undefined,
+      cardName: (formData.paymentMethod === 'credit' || formData.paymentMethod === 'debit') ? formData.cardName : undefined,
+      expiryDate: (formData.paymentMethod === 'credit' || formData.paymentMethod === 'debit') ? formData.expiryDate : undefined,
+      cvv: (formData.paymentMethod === 'credit' || formData.paymentMethod === 'debit') ? formData.cvv : undefined,
+      bank: formData.paymentMethod === 'pse' ? formData.bank : undefined,
+      documentType: formData.paymentMethod === 'pse' ? formData.documentType : undefined,
+      documentNumber: formData.paymentMethod === 'pse' ? formData.documentNumber : undefined,
+      phone: formData.paymentMethod === 'nequi' ? formData.nequiPhone : undefined,
+      cashOutlet: formData.paymentMethod === 'cash' ? formData.cashOutlet as any : undefined,
+    };
+
     try {
-      await checkout();
+      await checkout(paymentDetails);
       setIsSuccess(true);
     } catch (error) {
       console.error('Checkout failed', error);
@@ -176,46 +208,240 @@ const Checkout = () => {
               </div>
             </section>
 
-            {/* Payment (Mock) */}
+            {/* Payment Section */}
             <section>
-              <h2 className="text-xl font-serif text-stone-900 mb-6 pb-2 border-b border-stone-200">{t('checkout.payment')}</h2>
-              <div className="bg-stone-50 p-6 border border-stone-200 space-y-4">
-                <div>
-                  <label className="block text-sm font-medium text-stone-700 mb-1">{t('checkout.cardNumber')}</label>
-                  <input 
-                    type="text" 
-                    name="cardNumber"
-                    placeholder="0000 0000 0000 0000"
-                    value={formData.cardNumber}
-                    onChange={handleInputChange}
-                    className={`w-full p-3 border ${errors.cardNumber ? 'border-red-500' : 'border-stone-300'} focus:ring-1 focus:ring-stone-900 focus:border-stone-900 outline-none`}
-                  />
-                  {errors.cardNumber && <p className="text-red-500 text-xs mt-1">{errors.cardNumber}</p>}
-                </div>
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-stone-700 mb-1">{t('checkout.expiryDate')}</label>
-                    <input 
-                      type="text" 
-                      name="expiryDate"
-                      placeholder="MM/YY"
-                      value={formData.expiryDate}
-                      onChange={handleInputChange}
-                      className={`w-full p-3 border ${errors.expiryDate ? 'border-red-500' : 'border-stone-300'} focus:ring-1 focus:ring-stone-900 focus:border-stone-900 outline-none`}
-                    />
+              <h2 className="text-xl font-serif text-stone-900 mb-2 pb-2 border-b border-stone-200">{t('checkout.payment')}</h2>
+              <p className="text-sm text-stone-500 mb-6">{t('checkout.selectPayment')}</p>
+
+              {/* Payment Methods Selector Grid */}
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-6">
+                {/* Credit Card */}
+                <button
+                  type="button"
+                  onClick={() => setFormData(prev => ({ ...prev, paymentMethod: 'credit' }))}
+                  className={`p-4 border text-left flex flex-col justify-between items-start transition-all relative ${
+                    formData.paymentMethod === 'credit'
+                      ? 'border-stone-900 bg-stone-900 text-white shadow-md'
+                      : 'border-stone-200 bg-white text-stone-700 hover:border-stone-400'
+                  }`}
+                >
+                  <CreditCard className="w-6 h-6 mb-2" />
+                  <span className="text-xs font-semibold leading-tight">{t('checkout.methods.credit')}</span>
+                </button>
+
+                {/* Debit Card */}
+                <button
+                  type="button"
+                  onClick={() => setFormData(prev => ({ ...prev, paymentMethod: 'debit' }))}
+                  className={`p-4 border text-left flex flex-col justify-between items-start transition-all relative ${
+                    formData.paymentMethod === 'debit'
+                      ? 'border-stone-900 bg-stone-900 text-white shadow-md'
+                      : 'border-stone-200 bg-white text-stone-700 hover:border-stone-400'
+                  }`}
+                >
+                  <CreditCard className="w-6 h-6 mb-2" />
+                  <span className="text-xs font-semibold leading-tight">{t('checkout.methods.debit')}</span>
+                </button>
+
+                {/* PSE */}
+                <button
+                  type="button"
+                  onClick={() => setFormData(prev => ({ ...prev, paymentMethod: 'pse' }))}
+                  className={`p-4 border text-left flex flex-col justify-between items-start transition-all relative ${
+                    formData.paymentMethod === 'pse'
+                      ? 'border-stone-900 bg-stone-900 text-white shadow-md'
+                      : 'border-stone-200 bg-white text-stone-700 hover:border-stone-400'
+                  }`}
+                >
+                  <Landmark className="w-6 h-6 mb-2" />
+                  <span className="text-xs font-semibold leading-tight">{t('checkout.methods.pse')}</span>
+                </button>
+
+                {/* Nequi */}
+                <button
+                  type="button"
+                  onClick={() => setFormData(prev => ({ ...prev, paymentMethod: 'nequi' }))}
+                  className={`p-4 border text-left flex flex-col justify-between items-start transition-all relative ${
+                    formData.paymentMethod === 'nequi'
+                      ? 'border-stone-900 bg-stone-900 text-white shadow-md'
+                      : 'border-stone-200 bg-white text-stone-700 hover:border-stone-400'
+                  }`}
+                >
+                  <Smartphone className="w-6 h-6 mb-2" />
+                  <span className="text-xs font-semibold leading-tight">{t('checkout.methods.nequi')}</span>
+                </button>
+
+                {/* Cash */}
+                <button
+                  type="button"
+                  onClick={() => setFormData(prev => ({ ...prev, paymentMethod: 'cash' }))}
+                  className={`p-4 border text-left flex flex-col justify-between items-start transition-all relative ${
+                    formData.paymentMethod === 'cash'
+                      ? 'border-stone-900 bg-stone-900 text-white shadow-md'
+                      : 'border-stone-200 bg-white text-stone-700 hover:border-stone-400'
+                  }`}
+                >
+                  <Banknote className="w-6 h-6 mb-2" />
+                  <span className="text-xs font-semibold leading-tight">{t('checkout.methods.cash')}</span>
+                </button>
+              </div>
+
+              {/* Dynamic Payment Fields */}
+              <div className="bg-stone-50 p-6 border border-stone-200">
+                {/* Credit / Debit Card Fields */}
+                {(formData.paymentMethod === 'credit' || formData.paymentMethod === 'debit') && (
+                  <div className="space-y-4">
+                    <div>
+                      <label className="block text-sm font-medium text-stone-700 mb-1">{t('checkout.cardName')}</label>
+                      <input 
+                        type="text" 
+                        name="cardName"
+                        placeholder="NATALIA ROJAS"
+                        value={formData.cardName}
+                        onChange={handleInputChange}
+                        className={`w-full p-3 border ${errors.cardName ? 'border-red-500' : 'border-stone-300'} bg-white focus:ring-1 focus:ring-stone-900 focus:border-stone-900 outline-none`}
+                      />
+                      {errors.cardName && <p className="text-red-500 text-xs mt-1">{errors.cardName}</p>}
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-stone-700 mb-1">{t('checkout.cardNumber')}</label>
+                      <input 
+                        type="text" 
+                        name="cardNumber"
+                        placeholder="0000 0000 0000 0000"
+                        value={formData.cardNumber}
+                        onChange={handleInputChange}
+                        className={`w-full p-3 border ${errors.cardNumber ? 'border-red-500' : 'border-stone-300'} bg-white focus:ring-1 focus:ring-stone-900 focus:border-stone-900 outline-none`}
+                      />
+                      {errors.cardNumber && <p className="text-red-500 text-xs mt-1">{errors.cardNumber}</p>}
+                    </div>
+                    <div className="grid grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-sm font-medium text-stone-700 mb-1">{t('checkout.expiryDate')}</label>
+                        <input 
+                          type="text" 
+                          name="expiryDate"
+                          placeholder="MM/YY"
+                          value={formData.expiryDate}
+                          onChange={handleInputChange}
+                          className={`w-full p-3 border ${errors.expiryDate ? 'border-red-500' : 'border-stone-300'} bg-white focus:ring-1 focus:ring-stone-900 focus:border-stone-900 outline-none`}
+                        />
+                        {errors.expiryDate && <p className="text-red-500 text-xs mt-1">{errors.expiryDate}</p>}
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-stone-700 mb-1">{t('checkout.cvv')}</label>
+                        <input 
+                          type="text" 
+                          name="cvv"
+                          placeholder="123"
+                          value={formData.cvv}
+                          onChange={handleInputChange}
+                          className={`w-full p-3 border ${errors.cvv ? 'border-red-500' : 'border-stone-300'} bg-white focus:ring-1 focus:ring-stone-900 focus:border-stone-900 outline-none`}
+                        />
+                        {errors.cvv && <p className="text-red-500 text-xs mt-1">{errors.cvv}</p>}
+                      </div>
+                    </div>
                   </div>
-                  <div>
-                    <label className="block text-sm font-medium text-stone-700 mb-1">{t('checkout.cvv')}</label>
-                    <input 
-                      type="text" 
-                      name="cvv"
-                      placeholder="123"
-                      value={formData.cvv}
-                      onChange={handleInputChange}
-                      className={`w-full p-3 border ${errors.cvv ? 'border-red-500' : 'border-stone-300'} focus:ring-1 focus:ring-stone-900 focus:border-stone-900 outline-none`}
-                    />
+                )}
+
+                {/* PSE Fields */}
+                {formData.paymentMethod === 'pse' && (
+                  <div className="space-y-4">
+                    <div>
+                      <label className="block text-sm font-medium text-stone-700 mb-1">{t('checkout.pseBank')}</label>
+                      <select
+                        name="bank"
+                        value={formData.bank}
+                        onChange={handleInputChange}
+                        className="w-full p-3 border border-stone-300 bg-white focus:ring-1 focus:ring-stone-900 focus:border-stone-900 outline-none cursor-pointer"
+                      >
+                        <option value="bancolombia">Bancolombia</option>
+                        <option value="davivienda">Davivienda</option>
+                        <option value="banco_de_bogota">Banco de Bogotá</option>
+                        <option value="bbva">BBVA Colombia</option>
+                        <option value="lulo">Lulo Bank</option>
+                        <option value="rappipay">RappiPay</option>
+                        <option value="nu">Nu Colombia</option>
+                      </select>
+                    </div>
+                    <div className="grid grid-cols-3 gap-3">
+                      <div>
+                        <label className="block text-sm font-medium text-stone-700 mb-1">{t('checkout.pseDocType')}</label>
+                        <select
+                          name="documentType"
+                          value={formData.documentType}
+                          onChange={handleInputChange}
+                          className="w-full p-3 border border-stone-300 bg-white focus:ring-1 focus:ring-stone-900 focus:border-stone-900 outline-none cursor-pointer"
+                        >
+                          <option value="CC">CC</option>
+                          <option value="CE">CE</option>
+                          <option value="NIT">NIT</option>
+                          <option value="PP">Pasaporte</option>
+                        </select>
+                      </div>
+                      <div className="col-span-2">
+                        <label className="block text-sm font-medium text-stone-700 mb-1">{t('checkout.pseDocNumber')}</label>
+                        <input
+                          type="text"
+                          name="documentNumber"
+                          placeholder="1012345678"
+                          value={formData.documentNumber}
+                          onChange={handleInputChange}
+                          className={`w-full p-3 border ${errors.documentNumber ? 'border-red-500' : 'border-stone-300'} bg-white focus:ring-1 focus:ring-stone-900 focus:border-stone-900 outline-none`}
+                        />
+                        {errors.documentNumber && <p className="text-red-500 text-xs mt-1">{errors.documentNumber}</p>}
+                      </div>
+                    </div>
                   </div>
-                </div>
+                )}
+
+                {/* Nequi Fields */}
+                {formData.paymentMethod === 'nequi' && (
+                  <div className="space-y-4">
+                    <div>
+                      <label className="block text-sm font-medium text-stone-700 mb-1">{t('checkout.nequiPhone')}</label>
+                      <div className="flex">
+                        <span className="p-3 bg-stone-200 border border-r-0 border-stone-300 text-stone-600 text-sm font-medium flex items-center">+57</span>
+                        <input 
+                          type="text" 
+                          name="nequiPhone"
+                          placeholder="300 123 4567"
+                          value={formData.nequiPhone}
+                          onChange={handleInputChange}
+                          className={`w-full p-3 border ${errors.nequiPhone ? 'border-red-500' : 'border-stone-300'} bg-white focus:ring-1 focus:ring-stone-900 focus:border-stone-900 outline-none`}
+                        />
+                      </div>
+                      {errors.nequiPhone && <p className="text-red-500 text-xs mt-1">{errors.nequiPhone}</p>}
+                    </div>
+                    <p className="text-xs text-stone-500 flex items-center space-x-1">
+                      <ShieldCheck className="w-4 h-4 text-stone-600 flex-shrink-0 mr-1" />
+                      <span>{t('checkout.nequiNote')}</span>
+                    </p>
+                  </div>
+                )}
+
+                {/* Cash Fields */}
+                {formData.paymentMethod === 'cash' && (
+                  <div className="space-y-4">
+                    <div>
+                      <label className="block text-sm font-medium text-stone-700 mb-1">{t('checkout.cashOutlet')}</label>
+                      <select
+                        name="cashOutlet"
+                        value={formData.cashOutlet}
+                        onChange={handleInputChange}
+                        className="w-full p-3 border border-stone-300 bg-white focus:ring-1 focus:ring-stone-900 focus:border-stone-900 outline-none cursor-pointer"
+                      >
+                        <option value="efecty">Efecty</option>
+                        <option value="baloto">Vía Baloto</option>
+                        <option value="gana">Gana</option>
+                      </select>
+                    </div>
+                    <p className="text-xs text-stone-500 flex items-center space-x-1">
+                      <ShieldCheck className="w-4 h-4 text-stone-600 flex-shrink-0 mr-1" />
+                      <span>{t('checkout.cashNote')}</span>
+                    </p>
+                  </div>
+                )}
               </div>
             </section>
 
@@ -267,6 +493,10 @@ const Checkout = () => {
               <div className="flex justify-between">
                 <span className="text-stone-600">{t('checkout.shipping')}</span>
                 <span className="text-stone-900 font-medium">{shipping === 0 ? t('checkout.free') : `$${shipping.toFixed(2)}`}</span>
+              </div>
+              <div className="flex justify-between pt-2 border-t border-stone-200">
+                <span className="text-stone-600">{t('checkout.payment')}</span>
+                <span className="text-stone-900 font-medium capitalize">{t(`checkout.methods.${formData.paymentMethod}`)}</span>
               </div>
             </div>
 
