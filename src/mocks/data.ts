@@ -9,63 +9,753 @@ export const mockCategories: Category[] = [
 
 export const mockProducts: Product[] = [
   {
-    id: 'p1',
-    name: 'Hydrating Rose Serum',
-    description: 'A lightweight serum that deeply hydrates and plumps the skin.',
-    price: 45.00,
-    category: 'skincare',
-    image: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&q=80&w=600',
-    ingredients: ['Water', 'Glycerin', 'Rose Extract', 'Hyaluronic Acid'],
-    stock: 50
+    "id": "p1",
+    "name": "Intense Cream",
+    "description": "A premium skincare product designed to elevate your daily routine with high-quality ingredients and proven results.",
+    "price": 26.99,
+    "category": "skincare",
+    "image": "https://images.unsplash.com/photo-1611077543265-0a91176bc5ee?auto=format&fit=crop&q=80&w=600",
+    "ingredients": [
+      "Water",
+      "Glycerin",
+      "Natural Extracts",
+      "Essential Oils"
+    ],
+    "stock": 77
   },
   {
-    id: 'p2',
-    name: 'Matte Velvet Lipstick - Ruby',
-    description: 'Long-lasting matte lipstick in a bold ruby red shade.',
-    price: 28.00,
-    category: 'makeup',
-    image: 'https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&q=80&w=600',
-    ingredients: ['Beeswax', 'Castor Oil', 'Pigment Red 57:1'],
-    stock: 120
+    "id": "p2",
+    "name": "Essential Concealer",
+    "description": "A premium makeup product designed to elevate your daily routine with high-quality ingredients and proven results.",
+    "price": 43.99,
+    "category": "makeup",
+    "image": "https://images.unsplash.com/photo-1596462502278-27bf85033e5a?auto=format&fit=crop&q=80&w=600",
+    "ingredients": [
+      "Water",
+      "Glycerin",
+      "Natural Extracts",
+      "Essential Oils"
+    ],
+    "stock": 9
   },
   {
-    id: 'p3',
-    name: 'Argan Oil Hair Mask',
-    description: 'Intensive repairing mask for damaged and dry hair.',
-    price: 35.00,
-    category: 'haircare',
-    image: 'https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&q=80&w=600',
-    ingredients: ['Water', 'Argania Spinosa Kernel Oil', 'Cetearyl Alcohol'],
-    stock: 30
+    "id": "p3",
+    "name": "Revitalizing Scalp Treatment",
+    "description": "A premium haircare product designed to elevate your daily routine with high-quality ingredients and proven results.",
+    "price": 83.99,
+    "category": "haircare",
+    "image": "https://images.unsplash.com/photo-1596225916027-e435987a0f67?auto=format&fit=crop&q=80&w=600",
+    "ingredients": [
+      "Water",
+      "Glycerin",
+      "Natural Extracts",
+      "Essential Oils"
+    ],
+    "stock": 138
   },
   {
-    id: 'p4',
-    name: 'Midnight Bloom Eau de Parfum',
-    description: 'A sensual and mysterious fragrance with floral and woody notes.',
-    price: 85.00,
-    category: 'fragrance',
-    image: 'https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&q=80&w=600',
-    ingredients: ['Alcohol Denat', 'Fragrance', 'Water'],
-    stock: 20
+    "id": "p4",
+    "name": "Velvet Body Mist",
+    "description": "A premium fragrance product designed to elevate your daily routine with high-quality ingredients and proven results.",
+    "price": 38.99,
+    "category": "fragrance",
+    "image": "https://images.unsplash.com/photo-1592914610354-fd354d45fe82?auto=format&fit=crop&q=80&w=600",
+    "ingredients": [
+      "Water",
+      "Glycerin",
+      "Natural Extracts",
+      "Essential Oils"
+    ],
+    "stock": 57
   },
   {
-    id: 'p5',
-    name: 'Purifying Clay Mask',
-    description: 'Deep cleansing mask that minimizes pores and absorbs excess oil.',
-    price: 32.00,
-    category: 'skincare',
-    image: 'https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&q=80&w=600',
-    ingredients: ['Kaolin Clay', 'Water', 'Charcoal Powder'],
-    stock: 80
+    "id": "p5",
+    "name": "Silky Cream",
+    "description": "A premium skincare product designed to elevate your daily routine with high-quality ingredients and proven results.",
+    "price": 87.99,
+    "category": "skincare",
+    "image": "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&q=80&w=600",
+    "ingredients": [
+      "Water",
+      "Glycerin",
+      "Natural Extracts",
+      "Essential Oils"
+    ],
+    "stock": 97
   },
   {
-    id: 'p6',
-    name: 'Luminous Foundation',
-    description: 'Lightweight foundation for a natural, glowing finish.',
-    price: 42.00,
-    category: 'makeup',
-    image: 'https://images.unsplash.com/photo-1599305090598-fe179d501227?auto=format&fit=crop&q=80&w=600',
-    ingredients: ['Water', 'Dimethicone', 'Titanium Dioxide'],
-    stock: 65
+    "id": "p6",
+    "name": "Purifying Lipstick",
+    "description": "A premium makeup product designed to elevate your daily routine with high-quality ingredients and proven results.",
+    "price": 23.99,
+    "category": "makeup",
+    "image": "https://images.unsplash.com/photo-1596462502278-27bf85033e5a?auto=format&fit=crop&q=80&w=600",
+    "ingredients": [
+      "Water",
+      "Glycerin",
+      "Natural Extracts",
+      "Essential Oils"
+    ],
+    "stock": 55
+  },
+  {
+    "id": "p7",
+    "name": "Purifying Hair Mask",
+    "description": "A premium haircare product designed to elevate your daily routine with high-quality ingredients and proven results.",
+    "price": 27.99,
+    "category": "haircare",
+    "image": "https://images.unsplash.com/photo-1596225916027-e435987a0f67?auto=format&fit=crop&q=80&w=600",
+    "ingredients": [
+      "Water",
+      "Glycerin",
+      "Natural Extracts",
+      "Essential Oils"
+    ],
+    "stock": 53
+  },
+  {
+    "id": "p8",
+    "name": "Purifying Eau de Parfum",
+    "description": "A premium fragrance product designed to elevate your daily routine with high-quality ingredients and proven results.",
+    "price": 20.99,
+    "category": "fragrance",
+    "image": "https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?auto=format&fit=crop&q=80&w=600",
+    "ingredients": [
+      "Water",
+      "Glycerin",
+      "Natural Extracts",
+      "Essential Oils"
+    ],
+    "stock": 7
+  },
+  {
+    "id": "p9",
+    "name": "Velvet Serum",
+    "description": "A premium skincare product designed to elevate your daily routine with high-quality ingredients and proven results.",
+    "price": 47.99,
+    "category": "skincare",
+    "image": "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&q=80&w=600",
+    "ingredients": [
+      "Water",
+      "Glycerin",
+      "Natural Extracts",
+      "Essential Oils"
+    ],
+    "stock": 49
+  },
+  {
+    "id": "p10",
+    "name": "Velvet Blush",
+    "description": "A premium makeup product designed to elevate your daily routine with high-quality ingredients and proven results.",
+    "price": 21.99,
+    "category": "makeup",
+    "image": "https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&q=80&w=600",
+    "ingredients": [
+      "Water",
+      "Glycerin",
+      "Natural Extracts",
+      "Essential Oils"
+    ],
+    "stock": 109
+  },
+  {
+    "id": "p11",
+    "name": "Divine Conditioner",
+    "description": "A premium haircare product designed to elevate your daily routine with high-quality ingredients and proven results.",
+    "price": 54.99,
+    "category": "haircare",
+    "image": "https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&q=80&w=600",
+    "ingredients": [
+      "Water",
+      "Glycerin",
+      "Natural Extracts",
+      "Essential Oils"
+    ],
+    "stock": 135
+  },
+  {
+    "id": "p12",
+    "name": "Intense Body Mist",
+    "description": "A premium fragrance product designed to elevate your daily routine with high-quality ingredients and proven results.",
+    "price": 82.99,
+    "category": "fragrance",
+    "image": "https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&q=80&w=600",
+    "ingredients": [
+      "Water",
+      "Glycerin",
+      "Natural Extracts",
+      "Essential Oils"
+    ],
+    "stock": 86
+  },
+  {
+    "id": "p13",
+    "name": "Purifying Cleanser",
+    "description": "A premium skincare product designed to elevate your daily routine with high-quality ingredients and proven results.",
+    "price": 74.99,
+    "category": "skincare",
+    "image": "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&q=80&w=600",
+    "ingredients": [
+      "Water",
+      "Glycerin",
+      "Natural Extracts",
+      "Essential Oils"
+    ],
+    "stock": 111
+  },
+  {
+    "id": "p14",
+    "name": "Revitalizing Highlighter",
+    "description": "A premium makeup product designed to elevate your daily routine with high-quality ingredients and proven results.",
+    "price": 22.99,
+    "category": "makeup",
+    "image": "https://images.unsplash.com/photo-1599305090598-fe179d501227?auto=format&fit=crop&q=80&w=600",
+    "ingredients": [
+      "Water",
+      "Glycerin",
+      "Natural Extracts",
+      "Essential Oils"
+    ],
+    "stock": 47
+  },
+  {
+    "id": "p15",
+    "name": "Silky Hair Mask",
+    "description": "A premium haircare product designed to elevate your daily routine with high-quality ingredients and proven results.",
+    "price": 55.99,
+    "category": "haircare",
+    "image": "https://images.unsplash.com/photo-1626514757138-1ee4b772c6cf?auto=format&fit=crop&q=80&w=600",
+    "ingredients": [
+      "Water",
+      "Glycerin",
+      "Natural Extracts",
+      "Essential Oils"
+    ],
+    "stock": 142
+  },
+  {
+    "id": "p16",
+    "name": "Velvet Cologne",
+    "description": "A premium fragrance product designed to elevate your daily routine with high-quality ingredients and proven results.",
+    "price": 29.99,
+    "category": "fragrance",
+    "image": "https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?auto=format&fit=crop&q=80&w=600",
+    "ingredients": [
+      "Water",
+      "Glycerin",
+      "Natural Extracts",
+      "Essential Oils"
+    ],
+    "stock": 90
+  },
+  {
+    "id": "p17",
+    "name": "Silky Oil",
+    "description": "A premium skincare product designed to elevate your daily routine with high-quality ingredients and proven results.",
+    "price": 68.99,
+    "category": "skincare",
+    "image": "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&q=80&w=600",
+    "ingredients": [
+      "Water",
+      "Glycerin",
+      "Natural Extracts",
+      "Essential Oils"
+    ],
+    "stock": 69
+  },
+  {
+    "id": "p18",
+    "name": "Matte Bronzer",
+    "description": "A premium makeup product designed to elevate your daily routine with high-quality ingredients and proven results.",
+    "price": 20.99,
+    "category": "makeup",
+    "image": "https://images.unsplash.com/photo-1599305090598-fe179d501227?auto=format&fit=crop&q=80&w=600",
+    "ingredients": [
+      "Water",
+      "Glycerin",
+      "Natural Extracts",
+      "Essential Oils"
+    ],
+    "stock": 104
+  },
+  {
+    "id": "p19",
+    "name": "Hydrating Heat Protectant",
+    "description": "A premium haircare product designed to elevate your daily routine with high-quality ingredients and proven results.",
+    "price": 47.99,
+    "category": "haircare",
+    "image": "https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?auto=format&fit=crop&q=80&w=600",
+    "ingredients": [
+      "Water",
+      "Glycerin",
+      "Natural Extracts",
+      "Essential Oils"
+    ],
+    "stock": 146
+  },
+  {
+    "id": "p20",
+    "name": "Intense Solid Perfume",
+    "description": "A premium fragrance product designed to elevate your daily routine with high-quality ingredients and proven results.",
+    "price": 53.99,
+    "category": "fragrance",
+    "image": "https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?auto=format&fit=crop&q=80&w=600",
+    "ingredients": [
+      "Water",
+      "Glycerin",
+      "Natural Extracts",
+      "Essential Oils"
+    ],
+    "stock": 146
+  },
+  {
+    "id": "p21",
+    "name": "Matte Exfoliator",
+    "description": "A premium skincare product designed to elevate your daily routine with high-quality ingredients and proven results.",
+    "price": 59.99,
+    "category": "skincare",
+    "image": "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&q=80&w=600",
+    "ingredients": [
+      "Water",
+      "Glycerin",
+      "Natural Extracts",
+      "Essential Oils"
+    ],
+    "stock": 129
+  },
+  {
+    "id": "p22",
+    "name": "Hydrating Foundation",
+    "description": "A premium makeup product designed to elevate your daily routine with high-quality ingredients and proven results.",
+    "price": 35.99,
+    "category": "makeup",
+    "image": "https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&q=80&w=600",
+    "ingredients": [
+      "Water",
+      "Glycerin",
+      "Natural Extracts",
+      "Essential Oils"
+    ],
+    "stock": 133
+  },
+  {
+    "id": "p23",
+    "name": "Silky Heat Protectant",
+    "description": "A premium haircare product designed to elevate your daily routine with high-quality ingredients and proven results.",
+    "price": 62.99,
+    "category": "haircare",
+    "image": "https://images.unsplash.com/photo-1596225916027-e435987a0f67?auto=format&fit=crop&q=80&w=600",
+    "ingredients": [
+      "Water",
+      "Glycerin",
+      "Natural Extracts",
+      "Essential Oils"
+    ],
+    "stock": 62
+  },
+  {
+    "id": "p24",
+    "name": "Luminous Perfume Oil",
+    "description": "A premium fragrance product designed to elevate your daily routine with high-quality ingredients and proven results.",
+    "price": 68.99,
+    "category": "fragrance",
+    "image": "https://images.unsplash.com/photo-1587440871875-191322ee64b0?auto=format&fit=crop&q=80&w=600",
+    "ingredients": [
+      "Water",
+      "Glycerin",
+      "Natural Extracts",
+      "Essential Oils"
+    ],
+    "stock": 144
+  },
+  {
+    "id": "p25",
+    "name": "Silky Cream",
+    "description": "A premium skincare product designed to elevate your daily routine with high-quality ingredients and proven results.",
+    "price": 64.99,
+    "category": "skincare",
+    "image": "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&q=80&w=600",
+    "ingredients": [
+      "Water",
+      "Glycerin",
+      "Natural Extracts",
+      "Essential Oils"
+    ],
+    "stock": 49
+  },
+  {
+    "id": "p26",
+    "name": "Divine Eyeshadow",
+    "description": "A premium makeup product designed to elevate your daily routine with high-quality ingredients and proven results.",
+    "price": 45.99,
+    "category": "makeup",
+    "image": "https://images.unsplash.com/photo-1596462502278-27bf85033e5a?auto=format&fit=crop&q=80&w=600",
+    "ingredients": [
+      "Water",
+      "Glycerin",
+      "Natural Extracts",
+      "Essential Oils"
+    ],
+    "stock": 66
+  },
+  {
+    "id": "p27",
+    "name": "Radiant Heat Protectant",
+    "description": "A premium haircare product designed to elevate your daily routine with high-quality ingredients and proven results.",
+    "price": 83.99,
+    "category": "haircare",
+    "image": "https://images.unsplash.com/photo-1626514757138-1ee4b772c6cf?auto=format&fit=crop&q=80&w=600",
+    "ingredients": [
+      "Water",
+      "Glycerin",
+      "Natural Extracts",
+      "Essential Oils"
+    ],
+    "stock": 127
+  },
+  {
+    "id": "p28",
+    "name": "Radiant Perfume Oil",
+    "description": "A premium fragrance product designed to elevate your daily routine with high-quality ingredients and proven results.",
+    "price": 83.99,
+    "category": "fragrance",
+    "image": "https://images.unsplash.com/photo-1587440871875-191322ee64b0?auto=format&fit=crop&q=80&w=600",
+    "ingredients": [
+      "Water",
+      "Glycerin",
+      "Natural Extracts",
+      "Essential Oils"
+    ],
+    "stock": 47
+  },
+  {
+    "id": "p29",
+    "name": "Purifying Moisturizer",
+    "description": "A premium skincare product designed to elevate your daily routine with high-quality ingredients and proven results.",
+    "price": 32.99,
+    "category": "skincare",
+    "image": "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&q=80&w=600",
+    "ingredients": [
+      "Water",
+      "Glycerin",
+      "Natural Extracts",
+      "Essential Oils"
+    ],
+    "stock": 69
+  },
+  {
+    "id": "p30",
+    "name": "Radiant Lipstick",
+    "description": "A premium makeup product designed to elevate your daily routine with high-quality ingredients and proven results.",
+    "price": 24.99,
+    "category": "makeup",
+    "image": "https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?auto=format&fit=crop&q=80&w=600",
+    "ingredients": [
+      "Water",
+      "Glycerin",
+      "Natural Extracts",
+      "Essential Oils"
+    ],
+    "stock": 125
+  },
+  {
+    "id": "p31",
+    "name": "Intense Shampoo",
+    "description": "A premium haircare product designed to elevate your daily routine with high-quality ingredients and proven results.",
+    "price": 41.99,
+    "category": "haircare",
+    "image": "https://images.unsplash.com/photo-1526947425960-945c6e72858f?auto=format&fit=crop&q=80&w=600",
+    "ingredients": [
+      "Water",
+      "Glycerin",
+      "Natural Extracts",
+      "Essential Oils"
+    ],
+    "stock": 53
+  },
+  {
+    "id": "p32",
+    "name": "Essential Perfume Oil",
+    "description": "A premium fragrance product designed to elevate your daily routine with high-quality ingredients and proven results.",
+    "price": 92.99,
+    "category": "fragrance",
+    "image": "https://images.unsplash.com/photo-1587440871875-191322ee64b0?auto=format&fit=crop&q=80&w=600",
+    "ingredients": [
+      "Water",
+      "Glycerin",
+      "Natural Extracts",
+      "Essential Oils"
+    ],
+    "stock": 115
+  },
+  {
+    "id": "p33",
+    "name": "Essential Mask",
+    "description": "A premium skincare product designed to elevate your daily routine with high-quality ingredients and proven results.",
+    "price": 93.99,
+    "category": "skincare",
+    "image": "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&q=80&w=600",
+    "ingredients": [
+      "Water",
+      "Glycerin",
+      "Natural Extracts",
+      "Essential Oils"
+    ],
+    "stock": 125
+  },
+  {
+    "id": "p34",
+    "name": "Purifying Concealer",
+    "description": "A premium makeup product designed to elevate your daily routine with high-quality ingredients and proven results.",
+    "price": 62.99,
+    "category": "makeup",
+    "image": "https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&q=80&w=600",
+    "ingredients": [
+      "Water",
+      "Glycerin",
+      "Natural Extracts",
+      "Essential Oils"
+    ],
+    "stock": 136
+  },
+  {
+    "id": "p35",
+    "name": "Silky Styling Cream",
+    "description": "A premium haircare product designed to elevate your daily routine with high-quality ingredients and proven results.",
+    "price": 34.99,
+    "category": "haircare",
+    "image": "https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&q=80&w=600",
+    "ingredients": [
+      "Water",
+      "Glycerin",
+      "Natural Extracts",
+      "Essential Oils"
+    ],
+    "stock": 77
+  },
+  {
+    "id": "p36",
+    "name": "Intense Body Mist",
+    "description": "A premium fragrance product designed to elevate your daily routine with high-quality ingredients and proven results.",
+    "price": 15.99,
+    "category": "fragrance",
+    "image": "https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&q=80&w=600",
+    "ingredients": [
+      "Water",
+      "Glycerin",
+      "Natural Extracts",
+      "Essential Oils"
+    ],
+    "stock": 11
+  },
+  {
+    "id": "p37",
+    "name": "Velvet Exfoliator",
+    "description": "A premium skincare product designed to elevate your daily routine with high-quality ingredients and proven results.",
+    "price": 82.99,
+    "category": "skincare",
+    "image": "https://images.unsplash.com/photo-1611077543265-0a91176bc5ee?auto=format&fit=crop&q=80&w=600",
+    "ingredients": [
+      "Water",
+      "Glycerin",
+      "Natural Extracts",
+      "Essential Oils"
+    ],
+    "stock": 123
+  },
+  {
+    "id": "p38",
+    "name": "Hydrating Concealer",
+    "description": "A premium makeup product designed to elevate your daily routine with high-quality ingredients and proven results.",
+    "price": 90.99,
+    "category": "makeup",
+    "image": "https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&q=80&w=600",
+    "ingredients": [
+      "Water",
+      "Glycerin",
+      "Natural Extracts",
+      "Essential Oils"
+    ],
+    "stock": 85
+  },
+  {
+    "id": "p39",
+    "name": "Intense Hair Mask",
+    "description": "A premium haircare product designed to elevate your daily routine with high-quality ingredients and proven results.",
+    "price": 72.99,
+    "category": "haircare",
+    "image": "https://images.unsplash.com/photo-1526947425960-945c6e72858f?auto=format&fit=crop&q=80&w=600",
+    "ingredients": [
+      "Water",
+      "Glycerin",
+      "Natural Extracts",
+      "Essential Oils"
+    ],
+    "stock": 99
+  },
+  {
+    "id": "p40",
+    "name": "Intense Eau de Toilette",
+    "description": "A premium fragrance product designed to elevate your daily routine with high-quality ingredients and proven results.",
+    "price": 28.99,
+    "category": "fragrance",
+    "image": "https://images.unsplash.com/photo-1592914610354-fd354d45fe82?auto=format&fit=crop&q=80&w=600",
+    "ingredients": [
+      "Water",
+      "Glycerin",
+      "Natural Extracts",
+      "Essential Oils"
+    ],
+    "stock": 43
+  },
+  {
+    "id": "p41",
+    "name": "Revitalizing Moisturizer",
+    "description": "A premium skincare product designed to elevate your daily routine with high-quality ingredients and proven results.",
+    "price": 66.99,
+    "category": "skincare",
+    "image": "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&q=80&w=600",
+    "ingredients": [
+      "Water",
+      "Glycerin",
+      "Natural Extracts",
+      "Essential Oils"
+    ],
+    "stock": 21
+  },
+  {
+    "id": "p42",
+    "name": "Divine Lipstick",
+    "description": "A premium makeup product designed to elevate your daily routine with high-quality ingredients and proven results.",
+    "price": 47.99,
+    "category": "makeup",
+    "image": "https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?auto=format&fit=crop&q=80&w=600",
+    "ingredients": [
+      "Water",
+      "Glycerin",
+      "Natural Extracts",
+      "Essential Oils"
+    ],
+    "stock": 79
+  },
+  {
+    "id": "p43",
+    "name": "Divine Hair Oil",
+    "description": "A premium haircare product designed to elevate your daily routine with high-quality ingredients and proven results.",
+    "price": 38.99,
+    "category": "haircare",
+    "image": "https://images.unsplash.com/photo-1626514757138-1ee4b772c6cf?auto=format&fit=crop&q=80&w=600",
+    "ingredients": [
+      "Water",
+      "Glycerin",
+      "Natural Extracts",
+      "Essential Oils"
+    ],
+    "stock": 56
+  },
+  {
+    "id": "p44",
+    "name": "Revitalizing Eau de Parfum",
+    "description": "A premium fragrance product designed to elevate your daily routine with high-quality ingredients and proven results.",
+    "price": 74.99,
+    "category": "fragrance",
+    "image": "https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&q=80&w=600",
+    "ingredients": [
+      "Water",
+      "Glycerin",
+      "Natural Extracts",
+      "Essential Oils"
+    ],
+    "stock": 57
+  },
+  {
+    "id": "p45",
+    "name": "Luminous Oil",
+    "description": "A premium skincare product designed to elevate your daily routine with high-quality ingredients and proven results.",
+    "price": 55.99,
+    "category": "skincare",
+    "image": "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&q=80&w=600",
+    "ingredients": [
+      "Water",
+      "Glycerin",
+      "Natural Extracts",
+      "Essential Oils"
+    ],
+    "stock": 87
+  },
+  {
+    "id": "p46",
+    "name": "Matte Bronzer",
+    "description": "A premium makeup product designed to elevate your daily routine with high-quality ingredients and proven results.",
+    "price": 59.99,
+    "category": "makeup",
+    "image": "https://images.unsplash.com/photo-1512496115851-a1c8e04ccbe0?auto=format&fit=crop&q=80&w=600",
+    "ingredients": [
+      "Water",
+      "Glycerin",
+      "Natural Extracts",
+      "Essential Oils"
+    ],
+    "stock": 68
+  },
+  {
+    "id": "p47",
+    "name": "Silky Heat Protectant",
+    "description": "A premium haircare product designed to elevate your daily routine with high-quality ingredients and proven results.",
+    "price": 26.99,
+    "category": "haircare",
+    "image": "https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?auto=format&fit=crop&q=80&w=600",
+    "ingredients": [
+      "Water",
+      "Glycerin",
+      "Natural Extracts",
+      "Essential Oils"
+    ],
+    "stock": 63
+  },
+  {
+    "id": "p48",
+    "name": "Revitalizing Eau de Parfum",
+    "description": "A premium fragrance product designed to elevate your daily routine with high-quality ingredients and proven results.",
+    "price": 86.99,
+    "category": "fragrance",
+    "image": "https://images.unsplash.com/photo-1587440871875-191322ee64b0?auto=format&fit=crop&q=80&w=600",
+    "ingredients": [
+      "Water",
+      "Glycerin",
+      "Natural Extracts",
+      "Essential Oils"
+    ],
+    "stock": 31
+  },
+  {
+    "id": "p49",
+    "name": "Divine Toner",
+    "description": "A premium skincare product designed to elevate your daily routine with high-quality ingredients and proven results.",
+    "price": 57.99,
+    "category": "skincare",
+    "image": "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&q=80&w=600",
+    "ingredients": [
+      "Water",
+      "Glycerin",
+      "Natural Extracts",
+      "Essential Oils"
+    ],
+    "stock": 131
+  },
+  {
+    "id": "p50",
+    "name": "Matte Highlighter",
+    "description": "A premium makeup product designed to elevate your daily routine with high-quality ingredients and proven results.",
+    "price": 49.99,
+    "category": "makeup",
+    "image": "https://images.unsplash.com/photo-1512496115851-a1c8e04ccbe0?auto=format&fit=crop&q=80&w=600",
+    "ingredients": [
+      "Water",
+      "Glycerin",
+      "Natural Extracts",
+      "Essential Oils"
+    ],
+    "stock": 27
   }
 ];
