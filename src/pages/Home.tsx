@@ -65,7 +65,7 @@ const Home = () => {
             </h1>
 
             <p className="text-base sm:text-lg text-stone-300 mb-10 font-light leading-relaxed animate-text-delay">
-              {t(`home.heroDesc`)}
+              {t(`home.heroMessages.${heroIndex}.desc`)}
             </p>
 
             <div className="animate-btn-delay">
