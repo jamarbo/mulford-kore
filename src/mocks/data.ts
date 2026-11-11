@@ -14,7 +14,7 @@ export const mockProducts: Product[] = [
     "description": "A premium skincare product designed to elevate your daily routine with high-quality ingredients and proven results.",
     "price": 26.99,
     "category": "skincare",
-    "image": "https://images.unsplash.com/photo-1611077543265-0a91176bc5ee?auto=format&fit=crop&q=80&w=600",
+    "image": "https://images.unsplash.com/photo-1629198688000-71f23e745b6e?auto=format&fit=crop&q=80&w=600",
     "ingredients": [
       "Water",
       "Glycerin",
@@ -29,7 +29,7 @@ export const mockProducts: Product[] = [
     "description": "A premium makeup product designed to elevate your daily routine with high-quality ingredients and proven results.",
     "price": 43.99,
     "category": "makeup",
-    "image": "https://images.unsplash.com/photo-1596462502278-27bf85033e5a?auto=format&fit=crop&q=80&w=600",
+    "image": "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&q=80&w=600",
     "ingredients": [
       "Water",
       "Glycerin",
@@ -44,7 +44,7 @@ export const mockProducts: Product[] = [
     "description": "A premium haircare product designed to elevate your daily routine with high-quality ingredients and proven results.",
     "price": 83.99,
     "category": "haircare",
-    "image": "https://images.unsplash.com/photo-1596225916027-e435987a0f67?auto=format&fit=crop&q=80&w=600",
+    "image": "https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?auto=format&fit=crop&q=80&w=600",
     "ingredients": [
       "Water",
       "Glycerin",
@@ -59,7 +59,7 @@ export const mockProducts: Product[] = [
     "description": "A premium fragrance product designed to elevate your daily routine with high-quality ingredients and proven results.",
     "price": 38.99,
     "category": "fragrance",
-    "image": "https://images.unsplash.com/photo-1592914610354-fd354d45fe82?auto=format&fit=crop&q=80&w=600",
+    "image": "https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&q=80&w=600",
     "ingredients": [
       "Water",
       "Glycerin",
@@ -89,7 +89,7 @@ export const mockProducts: Product[] = [
     "description": "A premium makeup product designed to elevate your daily routine with high-quality ingredients and proven results.",
     "price": 23.99,
     "category": "makeup",
-    "image": "https://images.unsplash.com/photo-1596462502278-27bf85033e5a?auto=format&fit=crop&q=80&w=600",
+    "image": "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&q=80&w=600",
     "ingredients": [
       "Water",
       "Glycerin",
@@ -104,7 +104,7 @@ export const mockProducts: Product[] = [
     "description": "A premium haircare product designed to elevate your daily routine with high-quality ingredients and proven results.",
     "price": 27.99,
     "category": "haircare",
-    "image": "https://images.unsplash.com/photo-1596225916027-e435987a0f67?auto=format&fit=crop&q=80&w=600",
+    "image": "https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?auto=format&fit=crop&q=80&w=600",
     "ingredients": [
       "Water",
       "Glycerin",
@@ -224,7 +224,7 @@ export const mockProducts: Product[] = [
     "description": "A premium haircare product designed to elevate your daily routine with high-quality ingredients and proven results.",
     "price": 55.99,
     "category": "haircare",
-    "image": "https://images.unsplash.com/photo-1626514757138-1ee4b772c6cf?auto=format&fit=crop&q=80&w=600",
+    "image": "https://images.unsplash.com/photo-1526947425960-945c6e72858f?auto=format&fit=crop&q=80&w=600",
     "ingredients": [
       "Water",
       "Glycerin",
@@ -344,7 +344,7 @@ export const mockProducts: Product[] = [
     "description": "A premium haircare product designed to elevate your daily routine with high-quality ingredients and proven results.",
     "price": 62.99,
     "category": "haircare",
-    "image": "https://images.unsplash.com/photo-1596225916027-e435987a0f67?auto=format&fit=crop&q=80&w=600",
+    "image": "https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?auto=format&fit=crop&q=80&w=600",
     "ingredients": [
       "Water",
       "Glycerin",
@@ -389,7 +389,7 @@ export const mockProducts: Product[] = [
     "description": "A premium makeup product designed to elevate your daily routine with high-quality ingredients and proven results.",
     "price": 45.99,
     "category": "makeup",
-    "image": "https://images.unsplash.com/photo-1596462502278-27bf85033e5a?auto=format&fit=crop&q=80&w=600",
+    "image": "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&q=80&w=600",
     "ingredients": [
       "Water",
       "Glycerin",
@@ -404,7 +404,7 @@ export const mockProducts: Product[] = [
     "description": "A premium haircare product designed to elevate your daily routine with high-quality ingredients and proven results.",
     "price": 83.99,
     "category": "haircare",
-    "image": "https://images.unsplash.com/photo-1626514757138-1ee4b772c6cf?auto=format&fit=crop&q=80&w=600",
+    "image": "https://images.unsplash.com/photo-1526947425960-945c6e72858f?auto=format&fit=crop&q=80&w=600",
     "ingredients": [
       "Water",
       "Glycerin",
@@ -554,7 +554,7 @@ export const mockProducts: Product[] = [
     "description": "A premium skincare product designed to elevate your daily routine with high-quality ingredients and proven results.",
     "price": 82.99,
     "category": "skincare",
-    "image": "https://images.unsplash.com/photo-1611077543265-0a91176bc5ee?auto=format&fit=crop&q=80&w=600",
+    "image": "https://images.unsplash.com/photo-1629198688000-71f23e745b6e?auto=format&fit=crop&q=80&w=600",
     "ingredients": [
       "Water",
       "Glycerin",
@@ -599,7 +599,7 @@ export const mockProducts: Product[] = [
     "description": "A premium fragrance product designed to elevate your daily routine with high-quality ingredients and proven results.",
     "price": 28.99,
     "category": "fragrance",
-    "image": "https://images.unsplash.com/photo-1592914610354-fd354d45fe82?auto=format&fit=crop&q=80&w=600",
+    "image": "https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&q=80&w=600",
     "ingredients": [
       "Water",
       "Glycerin",
@@ -644,7 +644,7 @@ export const mockProducts: Product[] = [
     "description": "A premium haircare product designed to elevate your daily routine with high-quality ingredients and proven results.",
     "price": 38.99,
     "category": "haircare",
-    "image": "https://images.unsplash.com/photo-1626514757138-1ee4b772c6cf?auto=format&fit=crop&q=80&w=600",
+    "image": "https://images.unsplash.com/photo-1526947425960-945c6e72858f?auto=format&fit=crop&q=80&w=600",
     "ingredients": [
       "Water",
       "Glycerin",
@@ -689,7 +689,7 @@ export const mockProducts: Product[] = [
     "description": "A premium makeup product designed to elevate your daily routine with high-quality ingredients and proven results.",
     "price": 59.99,
     "category": "makeup",
-    "image": "https://images.unsplash.com/photo-1512496115851-a1c8e04ccbe0?auto=format&fit=crop&q=80&w=600",
+    "image": "https://images.unsplash.com/photo-1599305090598-fe179d501227?auto=format&fit=crop&q=80&w=600",
     "ingredients": [
       "Water",
       "Glycerin",
@@ -749,7 +749,7 @@ export const mockProducts: Product[] = [
     "description": "A premium makeup product designed to elevate your daily routine with high-quality ingredients and proven results.",
     "price": 49.99,
     "category": "makeup",
-    "image": "https://images.unsplash.com/photo-1512496115851-a1c8e04ccbe0?auto=format&fit=crop&q=80&w=600",
+    "image": "https://images.unsplash.com/photo-1599305090598-fe179d501227?auto=format&fit=crop&q=80&w=600",
     "ingredients": [
       "Water",
       "Glycerin",
