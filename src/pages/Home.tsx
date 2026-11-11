@@ -24,7 +24,16 @@ const Home = () => {
     <div>
       {/* Hero Section */}
       <section className="relative min-h-[92vh] bg-stone-900 text-white flex flex-col justify-between overflow-hidden py-12 md:py-16">
-        {/* Background Overlay & Skeleton Fallback */}
+        {/* Animated Intro: Founder Image Blur-In & Fade-Out Background */}
+        <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+          <img 
+            src="/founder.png" 
+            alt="Natalia Rojas - MulfordKore Founder" 
+            className="w-full h-full object-cover object-center animate-founder-bg"
+          />
+        </div>
+
+        {/* Regular Editorial Background Overlay */}
         <div className={`absolute inset-0 z-0 transition-opacity duration-1000 ${imageLoaded ? 'opacity-60' : 'opacity-20'}`}>
           <img 
             src="https://images.unsplash.com/photo-1556228578-0d85b1a4d571?auto=format&fit=crop&q=80&w=2000" 
@@ -35,29 +44,34 @@ const Home = () => {
         </div>
         
         {/* Vignette & Gradient for depth */}
-        <div className="absolute inset-0 bg-gradient-to-r from-stone-950/90 via-stone-950/60 to-transparent z-0"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-stone-950/95 via-stone-950/70 to-transparent z-0"></div>
 
         {/* Top Hero Content */}
         <div className="container mx-auto px-4 relative z-10 my-auto">
-          <div className="max-w-xl">
-            {/* Tagline */}
-            <span className="inline-block text-xs uppercase tracking-[0.3em] font-medium text-stone-300 mb-4 animate-text-appear">
-              MulfordKore Atelier
-            </span>
+          <div className="max-w-2xl">
+            {/* Prominent High Fashion Brand Emblem Header */}
+            <div className="mb-6 border-b border-white/20 pb-4 inline-block">
+              <span className="block text-2xl sm:text-3xl md:text-4xl font-serif tracking-[0.3em] font-extrabold text-white uppercase animate-brand-title">
+                MULFORDKORE
+              </span>
+              <span className="block text-xs uppercase tracking-[0.45em] text-stone-300 font-medium mt-1">
+                HIGH COSMETICS ATELIER
+              </span>
+            </div>
             
-            <h1 className="text-5xl md:text-7xl font-serif text-white mb-6 leading-tight animate-text-appear">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif text-white mb-6 leading-tight animate-text-appear">
               {t(`home.heroMessages.${heroIndex}.title1`)} <br />
               <span className="italic font-normal text-stone-200">{t(`home.heroMessages.${heroIndex}.title2`)}</span>
             </h1>
 
-            <p className="text-lg md:text-xl text-stone-300 mb-10 font-light leading-relaxed animate-text-delay">
-              {t(`home.heroMessages.${heroIndex}.desc`)}
+            <p className="text-base sm:text-lg text-stone-300 mb-10 font-light leading-relaxed animate-text-delay">
+              {t(`home.heroDesc`)}
             </p>
 
             <div className="animate-btn-delay">
               <Link 
                 to="/products" 
-                className="group relative inline-flex items-center space-x-3 bg-white text-stone-900 px-8 py-4 text-xs font-semibold uppercase tracking-[0.2em] overflow-hidden transition-all duration-300 hover:bg-stone-200 hover:shadow-2xl hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-stone-900"
+                className="group relative inline-flex items-center space-x-3 bg-white text-stone-900 px-9 py-4 text-xs font-bold uppercase tracking-[0.25em] overflow-hidden transition-all duration-300 hover:bg-stone-200 hover:shadow-2xl hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-stone-900"
               >
                 <span className="relative z-10">{t('home.shopCollection')}</span>
                 <ArrowRight className="w-4 h-4 relative z-10 transition-transform duration-300 group-hover:translate-x-1" />

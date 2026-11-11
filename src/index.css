@@ -1,14 +1,67 @@
 @import 'tailwindcss';
 
 @keyframes heroFadeIn {
-  from {
+  0% {
     opacity: 0;
+    transform: scale(1.08);
+  }
+  50% {
+    opacity: 0.5;
     transform: scale(1.03);
   }
-  to {
+  100% {
     opacity: 0.6;
     transform: scale(1);
   }
+}
+
+@keyframes founderBackgroundSequence {
+  0% {
+    opacity: 0;
+    filter: blur(12px) grayscale(100%);
+    transform: scale(1.1);
+  }
+  25% {
+    opacity: 0.45;
+    filter: blur(4px) grayscale(30%);
+    transform: scale(1.05);
+  }
+  60% {
+    opacity: 0.35;
+    filter: blur(2px) grayscale(0%);
+    transform: scale(1.02);
+  }
+  100% {
+    opacity: 0;
+    filter: blur(16px) grayscale(100%);
+    transform: scale(1);
+  }
+}
+
+@keyframes brandPulse {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+    letter-spacing: 0.2em;
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    letter-spacing: 0.35em;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    letter-spacing: 0.3em;
+  }
+}
+
+.animate-founder-bg {
+  animation: founderBackgroundSequence 4.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.animate-brand-title {
+  animation: brandPulse 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 @keyframes textSlideUp {
