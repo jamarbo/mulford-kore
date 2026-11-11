@@ -1,5 +1,5 @@
-  import { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { CheckCircle2, CreditCard, Smartphone, Landmark, Banknote, ShieldCheck, AlertCircle } from 'lucide-react';
 import { useStore } from '../store/useStore';
 import { useTranslation } from 'react-i18next';
@@ -9,7 +9,6 @@ type PaymentStatus = 'idle' | 'processing' | 'success' | 'error';
 
 const Checkout = () => {
   const { cart, checkout, isLoading } = useStore();
-  const navigate = useNavigate();
   const { t } = useTranslation();
   const [paymentStatus, setPaymentStatus] = useState<PaymentStatus>('idle');
   const [paymentErrorMessage, setPaymentErrorMessage] = useState<string | null>(null);
@@ -189,8 +188,18 @@ const Checkout = () => {
   }
 
   if (cart.length === 0) {
-    navigate('/cart');
-    return null;
+    return (
+      <div className="container mx-auto px-4 py-32 text-center">
+        <h1 className="text-3xl font-serif text-stone-900 mb-6">{t('cart.empty')}</h1>
+        <p className="text-stone-500 mb-8">{t('cart.emptyDesc')}</p>
+        <Link 
+          to="/products" 
+          className="inline-block bg-stone-900 text-white px-8 py-4 uppercase tracking-widest text-sm font-medium hover:bg-stone-800 transition-colors"
+        >
+          {t('cart.continue')}
+        </Link>
+      </div>
+    );
   }
 
   return (
