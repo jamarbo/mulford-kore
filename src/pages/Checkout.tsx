@@ -1,4 +1,4 @@
-import { useState } from 'react';
+  import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { CheckCircle2, CreditCard, Smartphone, Landmark, Banknote, ShieldCheck, AlertCircle } from 'lucide-react';
 import { useStore } from '../store/useStore';
