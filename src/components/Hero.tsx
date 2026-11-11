@@ -117,8 +117,8 @@ export const Hero = ({ products }: HeroProps) => {
             className="text-base sm:text-lg md:text-xl text-stone-300 mb-10 font-light leading-relaxed max-w-xl"
           >
             {isEs 
-              ? 'Skincare y maquillaje de alta gama seleccionados cuidadosamente para nutrir y potenciar tu brillo natural.'
-              : 'High-end skincare and cosmetics thoughtfully curated to nourish and elevate your natural radiance.'}
+              ? 'Skincare y maquillaje coreano seleccionados para potenciar tu belleza natural.'
+              : 'Korean skincare and cosmetics curated to empower your natural beauty.'}
           </motion.p>
 
           {/* Dual Action CTA Buttons */}
