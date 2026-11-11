@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Sparkles } from 'lucide-react';
 import { useStore } from '../store/useStore';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { HeroCarousel } from '../components/HeroCarousel';
 
 const Home = () => {
   const { products, fetchProducts, isLoading } = useStore();
@@ -17,48 +18,64 @@ const Home = () => {
 
   return (
     <div>
-      {/* Hero Section */}
-      <section className="relative h-[85vh] bg-stone-900 flex items-center overflow-hidden">
-        {/* Background Overlay & Skeleton Fallback */}
-        <div className={`absolute inset-0 z-0 transition-opacity duration-1000 ${imageLoaded ? 'opacity-100' : 'opacity-20'}`}>
+      {/* Luxury Hero Section */}
+      <section className="relative min-h-[92vh] bg-[#4A0E0E] text-white flex flex-col justify-between overflow-hidden py-12 md:py-16">
+        {/* Background Overlay with Rich Vignette */}
+        <div className={`absolute inset-0 z-0 transition-opacity duration-1000 ${imageLoaded ? 'opacity-30' : 'opacity-10'}`}>
           <img 
             src="https://images.unsplash.com/photo-1556228578-0d85b1a4d571?auto=format&fit=crop&q=80&w=2000" 
-            alt="Cosmetics flatlay editorial" 
+            alt="Mulford Kore Cosmetics background" 
             onLoad={() => setImageLoaded(true)}
             className="w-full h-full object-cover animate-hero-bg"
           />
         </div>
         
-        {/* Vignette & Gradient for depth */}
-        <div className="absolute inset-0 bg-gradient-to-r from-stone-950/80 via-stone-950/40 to-transparent z-0"></div>
+        {/* Radial Dark Burgundy Ambient Glows */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#2D0909]/90 via-[#4A0E0E]/80 to-[#2D0909] z-0 pointer-events-none"></div>
 
-        {/* Hero Content */}
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-xl">
-            {/* Tagline */}
-            <span className="inline-block text-xs uppercase tracking-[0.3em] font-medium text-stone-300 mb-4 animate-text-appear">
-              MulfordKore Atelier
-            </span>
+        {/* Top Hero Content */}
+        <div className="container mx-auto px-4 relative z-10 my-auto">
+          <div className="max-w-3xl mx-auto text-center">
+            {/* Tagline Badge */}
+            <div className="inline-flex items-center space-x-2 bg-[#D4AF37]/10 border border-[#D4AF37]/40 px-4 py-1.5 rounded-full mb-6 animate-text-appear">
+              <Sparkles className="w-3.5 h-3.5 text-[#D4AF37]" />
+              <span className="text-[11px] uppercase tracking-[0.3em] font-semibold text-[#D4AF37]">
+                Mulford Kore High Cosmetics
+              </span>
+            </div>
             
-            <h1 className="text-5xl md:text-7xl font-serif text-white mb-6 leading-tight animate-text-appear">
+            <h1 className="text-4xl sm:text-6xl md:text-7xl font-serif text-white mb-6 leading-tight animate-text-appear">
               {t('home.heroTitle1')} <br />
-              <span className="italic font-normal text-stone-200">{t('home.heroTitle2')}</span>
+              <span className="italic font-normal text-[#D4AF37]">{t('home.heroTitle2')}</span>
             </h1>
 
-            <p className="text-lg md:text-xl text-stone-300 mb-10 font-light leading-relaxed animate-text-delay">
+            <p className="text-base sm:text-lg md:text-xl text-stone-200 mb-8 font-light leading-relaxed max-w-2xl mx-auto animate-text-delay">
               {t('home.heroDesc')}
             </p>
 
-            <div className="animate-btn-delay">
+            <div className="animate-btn-delay flex justify-center">
               <Link 
                 to="/products" 
-                className="group relative inline-flex items-center space-x-3 bg-white text-stone-900 px-8 py-4 text-xs font-semibold uppercase tracking-[0.2em] overflow-hidden transition-all duration-300 hover:bg-stone-200 hover:shadow-2xl hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-stone-900"
+                className="group relative inline-flex items-center space-x-3 bg-[#D4AF37] text-[#2D0909] px-9 py-4 text-xs font-bold uppercase tracking-[0.2em] rounded overflow-hidden transition-all duration-300 hover:bg-white hover:shadow-[0_0_25px_rgba(212,175,55,0.6)] hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-[#D4AF37]"
               >
                 <span className="relative z-10">{t('home.shopCollection')}</span>
                 <ArrowRight className="w-4 h-4 relative z-10 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
             </div>
           </div>
+        </div>
+
+        {/* Continuous Infinite Marquee Carousel Section */}
+        <div className="relative z-10 mt-12">
+          <div className="container mx-auto px-4 mb-3 flex items-center justify-between">
+            <h3 className="text-xs uppercase tracking-[0.25em] text-[#D4AF37] font-semibold">
+              Destacados del Catálogo
+            </h3>
+            <span className="text-[11px] text-stone-300 hidden sm:inline-block italic">
+              Pasa el cursor para pausar
+            </span>
+          </div>
+          <HeroCarousel products={products} />
         </div>
       </section>
 
