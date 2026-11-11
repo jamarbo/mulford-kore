@@ -122,7 +122,11 @@
     "free": "Gratis",
     "total": "Total",
     "successTitle": "¡Gracias!",
-    "successMsg": "Pago exitoso. Gracias por su compra.",
+    "successMsg": "Gracias por su compra, vuelva pronto",
+    "orderSummaryTitle": "Resumen de su Compra",
+    "orderId": "Número de Orden",
+    "orderDate": "Fecha",
+    "itemsPurchased": "Productos comprados",
     "errorMsg": "Ocurrió un error al procesar el pago. Por favor intente de nuevo.",
     "processing": "Procesando pago...",
     "continue": "Continuar Comprando"

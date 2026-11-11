@@ -3,7 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { CheckCircle2, CreditCard, Smartphone, Landmark, Banknote, ShieldCheck, AlertCircle } from 'lucide-react';
 import { useStore } from '../store/useStore';
 import { useTranslation } from 'react-i18next';
-import type { PaymentMethodType, PaymentDetails } from '../types';
+import type { PaymentMethodType, PaymentDetails, Order } from '../types';
 
 type PaymentStatus = 'idle' | 'processing' | 'success' | 'error';
 
@@ -13,6 +13,7 @@ const Checkout = () => {
   const { t } = useTranslation();
   const [paymentStatus, setPaymentStatus] = useState<PaymentStatus>('idle');
   const [paymentErrorMessage, setPaymentErrorMessage] = useState<string | null>(null);
+  const [completedOrder, setCompletedOrder] = useState<Order | null>(null);
 
   const [formData, setFormData] = useState({
     email: 'contacto@mulfordkore.com',
@@ -105,7 +106,8 @@ const Checkout = () => {
     };
 
     try {
-      await checkout(paymentDetails);
+      const order = await checkout(paymentDetails);
+      setCompletedOrder(order);
       setPaymentStatus('success');
     } catch (error: any) {
       console.error('Checkout failed', error);
@@ -116,18 +118,72 @@ const Checkout = () => {
 
   if (paymentStatus === 'success') {
     return (
-      <div className="container mx-auto px-4 py-32 text-center max-w-lg">
-        <CheckCircle2 className="w-20 h-20 text-stone-900 mx-auto mb-8" />
-        <h1 className="text-3xl font-serif text-stone-900 mb-4">{t('checkout.successMsg')}</h1>
-        <p className="text-stone-500 mb-8 leading-relaxed">
-          {t('checkout.successMsg')}
-        </p>
-        <Link 
-          to="/products" 
-          className="inline-block bg-stone-900 text-white px-8 py-4 uppercase tracking-widest text-sm font-medium hover:bg-stone-800 transition-colors"
-        >
-          {t('checkout.continue')}
-        </Link>
+      <div className="container mx-auto px-4 py-16 max-w-2xl">
+        <div className="text-center mb-10">
+          <CheckCircle2 className="w-16 h-16 text-stone-900 mx-auto mb-4" />
+          <h1 className="text-3xl md:text-4xl font-serif text-stone-900 mb-2">{t('checkout.successMsg')}</h1>
+        </div>
+
+        {/* Purchased Items Summary */}
+        {completedOrder && (
+          <div className="bg-stone-50 border border-stone-200 p-6 md:p-8 mb-8 text-left">
+            <div className="flex justify-between items-center pb-4 mb-6 border-b border-stone-200 text-sm text-stone-600">
+              <div>
+                <span className="font-semibold text-stone-900">{t('checkout.orderId')}: </span>
+                <span>#{completedOrder.id}</span>
+              </div>
+              <div>
+                <span className="font-semibold text-stone-900">{t('checkout.orderDate')}: </span>
+                <span>{new Date(completedOrder.createdAt).toLocaleDateString()}</span>
+              </div>
+            </div>
+
+            <h2 className="text-lg font-serif text-stone-900 mb-4">{t('checkout.orderSummaryTitle')}</h2>
+
+            <div className="divide-y divide-stone-200 mb-6">
+              {completedOrder.items.map((item) => (
+                <div key={item.id} className="py-3 flex items-center justify-between">
+                  <div className="flex items-center space-x-4">
+                    <img 
+                      src={item.product.image} 
+                      alt={item.product.name} 
+                      className="w-12 h-14 object-cover bg-stone-100"
+                    />
+                    <div>
+                      <h4 className="text-sm font-medium text-stone-900">{item.product.name}</h4>
+                      <p className="text-xs text-stone-500">{t('cart.quantity')}: {item.quantity}</p>
+                    </div>
+                  </div>
+                  <span className="text-sm font-medium text-stone-900">
+                    ${(item.product.price * item.quantity).toFixed(2)}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            <div className="border-t border-stone-200 pt-4 space-y-2 text-sm">
+              <div className="flex justify-between text-stone-600">
+                <span>{t('checkout.payment')}</span>
+                <span className="font-medium text-stone-900 capitalize">
+                  {completedOrder.paymentDetails?.method ? t(`checkout.methods.${completedOrder.paymentDetails.method}`) : ''}
+                </span>
+              </div>
+              <div className="flex justify-between text-base font-serif font-bold text-stone-900 pt-2 border-t border-stone-200">
+                <span>{t('checkout.total')}</span>
+                <span>${completedOrder.total.toFixed(2)}</span>
+              </div>
+            </div>
+          </div>
+        )}
+
+        <div className="text-center">
+          <Link 
+            to="/products" 
+            className="inline-block bg-stone-900 text-white px-8 py-4 uppercase tracking-widest text-sm font-medium hover:bg-stone-800 transition-colors"
+          >
+            {t('checkout.continue')}
+          </Link>
+        </div>
       </div>
     );
   }
