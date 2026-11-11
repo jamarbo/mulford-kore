@@ -122,7 +122,9 @@
     "free": "Free",
     "total": "Total",
     "successTitle": "Thank You!",
-    "successDesc": "Your order has been placed successfully. We've sent a confirmation email to {{email}} with your order details and tracking information.",
+    "successMsg": "Payment successful. Thank you for your purchase.",
+    "errorMsg": "An error occurred while processing the payment. Please try again.",
+    "processing": "Processing payment...",
     "continue": "Continue Shopping"
   }
 }

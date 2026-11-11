@@ -122,7 +122,9 @@
     "free": "Gratis",
     "total": "Total",
     "successTitle": "¡Gracias!",
-    "successDesc": "Tu pedido ha sido procesado exitosamente. Hemos enviado un correo de confirmación a {{email}} con los detalles de tu orden y la información de seguimiento.",
+    "successMsg": "Pago exitoso. Gracias por su compra.",
+    "errorMsg": "Ocurrió un error al procesar el pago. Por favor intente de nuevo.",
+    "processing": "Procesando pago...",
     "continue": "Continuar Comprando"
   }
 }

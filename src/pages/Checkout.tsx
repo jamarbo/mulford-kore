@@ -1,15 +1,18 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { CheckCircle2, CreditCard, Smartphone, Landmark, Banknote, ShieldCheck } from 'lucide-react';
+import { CheckCircle2, CreditCard, Smartphone, Landmark, Banknote, ShieldCheck, AlertCircle } from 'lucide-react';
 import { useStore } from '../store/useStore';
 import { useTranslation } from 'react-i18next';
 import type { PaymentMethodType, PaymentDetails } from '../types';
+
+type PaymentStatus = 'idle' | 'processing' | 'success' | 'error';
 
 const Checkout = () => {
   const { cart, checkout, isLoading } = useStore();
   const navigate = useNavigate();
   const { t } = useTranslation();
-  const [isSuccess, setIsSuccess] = useState(false);
+  const [paymentStatus, setPaymentStatus] = useState<PaymentStatus>('idle');
+  const [paymentErrorMessage, setPaymentErrorMessage] = useState<string | null>(null);
 
   const [formData, setFormData] = useState({
     email: 'contacto@mulfordkore.com',
@@ -77,7 +80,16 @@ const Checkout = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setPaymentErrorMessage(null);
     if (!validateForm()) return;
+
+    if (cart.length === 0) {
+      setPaymentStatus('error');
+      setPaymentErrorMessage('Your cart is empty');
+      return;
+    }
+
+    setPaymentStatus('processing');
 
     const paymentDetails: PaymentDetails = {
       method: formData.paymentMethod,
@@ -94,20 +106,21 @@ const Checkout = () => {
 
     try {
       await checkout(paymentDetails);
-      setIsSuccess(true);
-    } catch (error) {
+      setPaymentStatus('success');
+    } catch (error: any) {
       console.error('Checkout failed', error);
-      alert('Checkout failed. Please try again.');
+      setPaymentStatus('error');
+      setPaymentErrorMessage(error?.message || t('checkout.errorMsg'));
     }
   };
 
-  if (isSuccess) {
+  if (paymentStatus === 'success') {
     return (
       <div className="container mx-auto px-4 py-32 text-center max-w-lg">
         <CheckCircle2 className="w-20 h-20 text-stone-900 mx-auto mb-8" />
-        <h1 className="text-4xl font-serif text-stone-900 mb-4">{t('checkout.successTitle')}</h1>
+        <h1 className="text-3xl font-serif text-stone-900 mb-4">{t('checkout.successMsg')}</h1>
         <p className="text-stone-500 mb-8 leading-relaxed">
-          {t('checkout.successDesc', { email: formData.email })}
+          {t('checkout.successMsg')}
         </p>
         <Link 
           to="/products" 
@@ -119,7 +132,7 @@ const Checkout = () => {
     );
   }
 
-  if (cart.length === 0 && !isSuccess) {
+  if (cart.length === 0) {
     navigate('/cart');
     return null;
   }
@@ -127,6 +140,13 @@ const Checkout = () => {
   return (
     <div className="container mx-auto px-4 py-12 md:py-16">
       <h1 className="text-3xl font-serif text-stone-900 mb-10">{t('checkout.title')}</h1>
+
+      {paymentStatus === 'error' && (
+        <div className="mb-8 p-4 bg-red-50 border border-red-200 text-red-700 rounded-none flex items-center space-x-3">
+          <AlertCircle className="w-5 h-5 flex-shrink-0" />
+          <span className="text-sm font-medium">{paymentErrorMessage || t('checkout.errorMsg')}</span>
+        </div>
+      )}
 
       <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 flex-col-reverse lg:flex-row">
         {/* Form */}
@@ -447,11 +467,14 @@ const Checkout = () => {
 
             <button 
               type="submit"
-              disabled={isLoading}
+              disabled={isLoading || paymentStatus === 'processing'}
               className="w-full bg-stone-900 text-white px-8 py-4 uppercase tracking-widest text-sm font-medium hover:bg-stone-800 transition-colors disabled:opacity-70 flex justify-center items-center"
             >
-              {isLoading ? (
-                <div className="w-5 h-5 border-2 border-stone-400 border-t-white rounded-full animate-spin"></div>
+              {paymentStatus === 'processing' || isLoading ? (
+                <div className="flex items-center space-x-2">
+                  <div className="w-5 h-5 border-2 border-stone-400 border-t-white rounded-full animate-spin"></div>
+                  <span>{t('checkout.processing')}</span>
+                </div>
               ) : (
                 `${t('checkout.pay')} $${total.toFixed(2)}`
               )}
