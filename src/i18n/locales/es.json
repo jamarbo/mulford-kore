@@ -1,0 +1,111 @@
+{
+  "brand": {
+    "name": "MulfordKore Store",
+    "description": "Elevando la belleza a través de la ciencia y la naturaleza. Descubre nuestra cuidada selección de cosméticos premium."
+  },
+  "nav": {
+    "shopAll": "VER TODO",
+    "skincare": "CUIDADO FACIAL",
+    "makeup": "MAQUILLAJE",
+    "fragrance": "FRAGANCIAS"
+  },
+  "footer": {
+    "shop": "Tienda",
+    "allProducts": "Todos los productos",
+    "support": "Soporte",
+    "contact": "Contacto",
+    "faq": "Preguntas frecuentes",
+    "shipping": "Envíos y Devoluciones",
+    "newsletter": "Boletín",
+    "newsletterDesc": "Suscríbete para recibir ofertas exclusivas y tips de belleza.",
+    "emailPlaceholder": "Tu correo electrónico",
+    "subscribe": "Suscribirse",
+    "rights": "Todos los derechos reservados."
+  },
+  "home": {
+    "heroTitle1": "Abraza tu",
+    "heroTitle2": "Brillo Natural",
+    "heroDesc": "Descubre nuestra nueva colección de cosméticos limpios y sostenibles diseñados para la estética moderna.",
+    "shopCollection": "Comprar Colección",
+    "curated": "Favoritos Seleccionados",
+    "curatedDesc": "Nuestros productos más queridos, elegidos por ti.",
+    "viewAll": "Ver Todos los Productos",
+    "founderTitle": "Conoce a la Fundadora",
+    "founderName": "Natalia Rojas",
+    "founderQuote": "\"La belleza no se trata solo de lo que aplicas en tu piel, sino de la confianza que llevas dentro. MulfordKore nació del deseo de potenciar tu brillo natural a través de la ciencia y la intención.\"",
+    "founderRole": "Fundadora y Directora Creativa",
+    "values": {
+      "cleanTitle": "Ingredientes Limpios",
+      "cleanDesc": "Formulados sin parabenos, sulfatos ni ftalatos. Solo ingredientes puros y efectivos.",
+      "crueltyTitle": "Libres de Crueldad",
+      "crueltyDesc": "Nunca testamos en animales, y solo trabajamos con socios que comparten este compromiso.",
+      "susTitle": "Sostenible",
+      "susDesc": "Empaquetado de forma consciente utilizando materiales reciclables para minimizar nuestra huella."
+    }
+  },
+  "products": {
+    "title": "Todos los Productos",
+    "desc": "Explora nuestra colección completa de cosméticos formulados cuidadosamente.",
+    "filters": "Filtros",
+    "all": "Todos",
+    "sortFeatured": "Destacados",
+    "sortPriceAsc": "Precio: Menor a Mayor",
+    "sortPriceDesc": "Precio: Mayor a Menor",
+    "sortNameAsc": "Nombre: A - Z",
+    "lowStock": "Poco Stock",
+    "outOfStock": "Agotado",
+    "empty": "No se encontraron productos que coincidan con tu criterio.",
+    "clearFilters": "Limpiar filtros"
+  },
+  "product": {
+    "home": "Inicio",
+    "products": "Productos",
+    "notFound": "Producto No Encontrado",
+    "back": "Volver a Productos",
+    "addToCart": "Añadir al Carrito",
+    "outOfStock": "Agotado",
+    "shippingInfo": "Envío gratis en pedidos superiores a $50. Devoluciones en 30 días.",
+    "ingredients": "Ingredientes Principales"
+  },
+  "cart": {
+    "title": "Carrito de Compras",
+    "empty": "Tu carrito está vacío",
+    "emptyDesc": "Parece que aún no has añadido nada a tu carrito.",
+    "continue": "Continuar Comprando",
+    "product": "Producto",
+    "price": "Precio",
+    "quantity": "Cantidad",
+    "total": "Total",
+    "remove": "Eliminar",
+    "summary": "Resumen de Orden",
+    "subtotal": "Subtotal",
+    "shipping": "Envío",
+    "free": "Gratis",
+    "spendMore": "Gasta ${{amount}} más para envío gratis",
+    "checkout": "Ir a Pagar"
+  },
+  "checkout": {
+    "title": "Pagar",
+    "contactInfo": "Información de Contacto",
+    "email": "Correo electrónico",
+    "shippingAddress": "Dirección de Envío",
+    "firstName": "Nombre",
+    "lastName": "Apellido",
+    "address": "Dirección",
+    "city": "Ciudad",
+    "postalCode": "Código Postal",
+    "payment": "Pago",
+    "cardNumber": "Número de Tarjeta",
+    "expiryDate": "Fecha de Expiración",
+    "cvv": "CVV",
+    "pay": "Pagar",
+    "summary": "Resumen de Orden",
+    "subtotal": "Subtotal",
+    "shipping": "Envío",
+    "free": "Gratis",
+    "total": "Total",
+    "successTitle": "¡Gracias!",
+    "successDesc": "Tu pedido ha sido procesado exitosamente. Hemos enviado un correo de confirmación a {{email}} con los detalles de tu orden y la información de seguimiento.",
+    "continue": "Continuar Comprando"
+  }
+}

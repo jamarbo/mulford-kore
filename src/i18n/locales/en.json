@@ -1,0 +1,111 @@
+{
+  "brand": {
+    "name": "MulfordKore Store",
+    "description": "Elevating beauty through science and nature. Discover our curated collection of premium skincare and cosmetics."
+  },
+  "nav": {
+    "shopAll": "SHOP ALL",
+    "skincare": "SKINCARE",
+    "makeup": "MAKEUP",
+    "fragrance": "FRAGRANCE"
+  },
+  "footer": {
+    "shop": "Shop",
+    "allProducts": "All Products",
+    "support": "Support",
+    "contact": "Contact Us",
+    "faq": "FAQs",
+    "shipping": "Shipping & Returns",
+    "newsletter": "Newsletter",
+    "newsletterDesc": "Subscribe for exclusive offers and beauty tips.",
+    "emailPlaceholder": "Your email",
+    "subscribe": "Subscribe",
+    "rights": "All rights reserved."
+  },
+  "home": {
+    "heroTitle1": "Embrace Your",
+    "heroTitle2": "Natural Radiance",
+    "heroDesc": "Discover our new collection of clean, sustainable beauty essentials designed for the modern aesthetic.",
+    "shopCollection": "Shop the Collection",
+    "curated": "Curated Favorites",
+    "curatedDesc": "Our most loved products, chosen by you.",
+    "viewAll": "View All Products",
+    "founderTitle": "Meet the Founder",
+    "founderName": "Natalia Rojas",
+    "founderQuote": "\"Beauty is not just about what you apply to your skin, but the confidence you carry within. MulfordKore was born from the desire to empower natural radiance through science and intention.\"",
+    "founderRole": "Founder & Creative Director",
+    "values": {
+      "cleanTitle": "Clean Ingredients",
+      "cleanDesc": "Formulated without parabens, sulfates, or phthalates. Just pure, effective ingredients.",
+      "crueltyTitle": "Cruelty Free",
+      "crueltyDesc": "We never test on animals, and we only work with partners who share this commitment.",
+      "susTitle": "Sustainable",
+      "susDesc": "Thoughtfully packaged using recyclable materials to minimize our environmental footprint."
+    }
+  },
+  "products": {
+    "title": "All Products",
+    "desc": "Explore our complete collection of thoughtfully formulated skincare and cosmetics.",
+    "filters": "Filters",
+    "all": "All",
+    "sortFeatured": "Featured",
+    "sortPriceAsc": "Price: Low to High",
+    "sortPriceDesc": "Price: High to Low",
+    "sortNameAsc": "Name: A to Z",
+    "lowStock": "Low Stock",
+    "outOfStock": "Out of Stock",
+    "empty": "No products found matching your criteria.",
+    "clearFilters": "Clear filters"
+  },
+  "product": {
+    "home": "Home",
+    "products": "Products",
+    "notFound": "Product Not Found",
+    "back": "Back to Products",
+    "addToCart": "Add to Cart",
+    "outOfStock": "Out of Stock",
+    "shippingInfo": "Free shipping on orders over $50. Return within 30 days.",
+    "ingredients": "Key Ingredients"
+  },
+  "cart": {
+    "title": "Shopping Cart",
+    "empty": "Your Cart is Empty",
+    "emptyDesc": "Looks like you haven't added anything to your cart yet.",
+    "continue": "Continue Shopping",
+    "product": "Product",
+    "price": "Price",
+    "quantity": "Quantity",
+    "total": "Total",
+    "remove": "Remove",
+    "summary": "Order Summary",
+    "subtotal": "Subtotal",
+    "shipping": "Shipping",
+    "free": "Free",
+    "spendMore": "Spend ${{amount}} more for free shipping",
+    "checkout": "Proceed to Checkout"
+  },
+  "checkout": {
+    "title": "Checkout",
+    "contactInfo": "Contact Information",
+    "email": "Email",
+    "shippingAddress": "Shipping Address",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "address": "Address",
+    "city": "City",
+    "postalCode": "Postal Code",
+    "payment": "Payment",
+    "cardNumber": "Card Number",
+    "expiryDate": "Expiry Date",
+    "cvv": "CVV",
+    "pay": "Pay",
+    "summary": "Order Summary",
+    "subtotal": "Subtotal",
+    "shipping": "Shipping",
+    "free": "Free",
+    "total": "Total",
+    "successTitle": "Thank You!",
+    "successDesc": "Your order has been placed successfully. We've sent a confirmation email to {{email}} with your order details and tracking information.",
+    "continue": "Continue Shopping"
+  }
+}
